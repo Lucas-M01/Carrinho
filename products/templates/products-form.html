@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/products-form.css' %}">
+{% endblock css %}
+
+{% block title %}
+Carrinho
+{% endblock title %}
+
+{% block body %}
+
+<div class="app">
+    <div class="todo-list">    
+    <h1>Carrinho</h1>
+
+    <form class="form" method="POST">
+        {% csrf_token %}
+        {{ form }}
+        {% if product %}
+            <a class="form-button cor" href="{% url 'delete_product' product.id %}">Delete</a>
+        {% endif %}
+        <button class="form-button" type="submit">Save</button>
+    </form>
+    
+</div> 
+    
+{% endblock body %}
+
+
+
+</html>

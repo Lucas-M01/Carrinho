@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/products-form.css' %}">
+{% endblock css %}
+
+{% block title %}
+Carrinho
+{% endblock title %}
+
+{% block body %}
+    
+<div class="app">
+    <div class="todo-list">    
+        <h1>Carrinho</h1>
+        <a id="center" class="margi" href="{% url 'create_products' %}">New product</a>
+        <div>
+            <table id="tabela">
+                <thead>
+                    <tr>
+                        <th>Produto</th>
+                        <th>Preço</th>
+                        <th>Quantidade</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for product in products %}
+                        <tr>
+                            <td>{{ product.description }}</td>
+                            <td>{{ product.price }}</td>
+                            <td>{{ product.quantify }}</td>
+                            <td>  <a class="form-button cor" href="{% url 'update_product' product.id %}">Update</td>
+                            <td><a class="form-button cor" href="{% url 'delete_product' product.id %}">Delete</td>                            
+                        </tr>
+                    {% endfor %} 
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+    
+{% endblock body%}
+
+
+</html>

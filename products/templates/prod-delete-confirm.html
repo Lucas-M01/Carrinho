@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/products-form.css' %}">
+{% endblock css %}
+
+{% block title %}
+Carrinho
+{% endblock title %}
+
+{% block body %}
+    <div class="app">
+        <div class="todo-list">    
+            <h1>Carrinho</h1>
+            <form method="post">
+                {% csrf_token %}
+                <h2>Are you sure you want to remove {{ product.description }} ?</h2>
+                <button class="form-button" type="submit">Confirm</button>
+            </form>
+        </div>
+{% endblock body %}
+
+
+</html>
